@@ -15,3 +15,6 @@ router.post('/user', (req, res, next) => user.registerUser(req, res, next))
 
 // login 
 router.post('/login',(req, res, next) => auth.login(req, res, next))
+
+// logout 
+router.post('/logout',(req, res, next) => auth.logout(req, res, next))

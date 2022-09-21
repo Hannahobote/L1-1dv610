@@ -13,7 +13,7 @@ const auth = new Auth()
   app.use(express.urlencoded({ extended: false })) // makes the req.body object
   
   let options= {
-    name: 'auth',
+    name: 'session',
     secret: 'my-auth-app',
     resave: false,
     saveUninitialized: false,
@@ -29,7 +29,7 @@ const auth = new Auth()
     app.set('trust proxy', 1) // trust first proxy
     options.cookie.secure = true // serve secure cookies
   }
-  
+
   app.use(session(options))
   app.use('/', router) // Register routess
    //ladda ned lnu lint

@@ -13,8 +13,6 @@ export class User {
 
 
 async registerUser (req, res, next) {
-    // will push an object that contains username and password 
-    
     // if there is no req body, throw error
     if(!req.body.username && !req.body.password) {
       res.status(412).send({error: 'username and password requierd in the body'})
@@ -24,8 +22,15 @@ async registerUser (req, res, next) {
     const password = req.body.password
     const hashPassword = await bcrypt.hash(password, 10)
 
-    userDb.push({ id: uuidv4() ,username, password: hashPassword})
-    res.sendStatus(201)
-    
+    // find duplicate user
+    const duplicateUser = userDb.find(dupeUsername => dupeUsername.username === username)
+
+    if(duplicateUser) {
+      res.status(400).send('Username already takes, use another one.')
+    } else {
+      userDb.push({ id: uuidv4() ,username, password: hashPassword})
+      res.sendStatus(201)
+    }
+
   }
 }
