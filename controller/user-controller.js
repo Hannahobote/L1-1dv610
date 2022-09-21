@@ -26,7 +26,7 @@ async registerUser (req, res, next) {
     const duplicateUser = userDb.find(dupeUsername => dupeUsername.username === username)
 
     if(duplicateUser) {
-      res.status(400).send('Username already takes, use another one.')
+      res.status(400).send('Username already taken, use another one.')
     } else {
       userDb.push({ id: uuidv4() ,username, password: hashPassword})
       res.sendStatus(201)
