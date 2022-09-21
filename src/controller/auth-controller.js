@@ -1,4 +1,4 @@
-import { userDb } from '../user-mock-db.js'
+import { userDb } from '../server.js'
 import bcrypt from 'bcrypt'
 
 export class Auth {
