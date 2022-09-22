@@ -1,20 +1,17 @@
 import express from 'express'
-import { User } from '../controller/user-controller.js'
-import { Auth } from '../controller/auth-controller.js'
-const user = new User()
-const auth = new Auth()
+import { App } from '../controller/app.js'
+const controller = new App()
 export const router = express.Router()
 
 
 // get all user 
-router.get('/user', (req, res, next) => user.getUsers(req, res, next))
+router.get('/user', (req, res, next) => controller.getAllUsers(req, res, next))
 
 // create user 
-router.post('/user', (req, res, next) => user.registerUser(req, res, next))
-
+router.post('/user', (req, res, next) => controller.registerUser(req, res, next))
 
 // login 
-router.post('/login',(req, res, next) => auth.login(req, res, next))
+router.post('/login',(req, res, next) => controller.login(req, res, next))
 
 // logout 
-router.post('/logout',(req, res, next) => auth.logout(req, res, next))
+router.post('/logout',(req, res, next) => controller.logout(req, res, next))
