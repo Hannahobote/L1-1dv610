@@ -26,7 +26,7 @@ export class SimpleAuth {
     }
 
     const hashPassword = await bcrypt.hash(password, 10)
-    const user = new User({ username, password: hashPassword, authenticated: false})
+    const user = new User({ username, password: hashPassword, authenticated: false })
     user.save()
     return user
   }
@@ -35,31 +35,13 @@ export class SimpleAuth {
   async signIn(username, password) {
     try {
       // find user in database
-      const user = await User.findOne({ username })
-
-      if (user) {
-
-        // compare password with bcrypt. if password incorrect, throw error
-        if (await bcrypt.compare(password, user.password)) {
-
-          // set user as logged in
-         const results = await User.updateOne({ username } , {
-            authenticated: true
-          })
-
-          if(user.authenticated) {
-
-            this.setSurrentSignedInUser(user.username)
-            console.log('user logged in')
-          } else {
-            throw new Error ('An error happened whilst signin in, please try again')
-          }
-
-        } else {
-          throw new Error('wrong credentials')
-        }
+      const user = await this.findOneUserByhUsername(username)
+      // compare password
+      if (this.isPasswordCorrect(password, user.password)) {
+        // if passowrd true, auth user
+        await this.authenticateUser(user.username)
       } else {
-        throw new Error('User not found')
+        throw new Error('wrong credentials')
       }
 
     } catch (error) {
@@ -68,17 +50,37 @@ export class SimpleAuth {
 
   }
 
-  async signOut(currentUser) {
-    try {
-      // find user in database and update athentication state
-      const result = await User.updateOne({ username: currentUser} , {
-        authenticated: false
-      })
-      
-      console.log('user logged out')
-    } catch (error) {
-      console.log(error)
+  async findOneUserByhUsername(username) {
+    // find user in database
+    const user = await User.findOne({ username })
+    if (user) {
+      return user
+    } else {
+      throw new Error('User not found')
     }
+  }
+
+  async isPasswordCorrect(typedInPassword, actuallPassword) {
+    return await bcrypt.compare(typedInPassword, actuallPassword)
+  }
+
+  async authenticateUser(username) {
+    // set user as logged in
+    await User.updateOne({ username }, {
+      authenticated: true
+    })
+    this.setSurrentSignedInUser(username)
+
+    console.log('user logged in')
+  }
+
+  async signOut(currentUser) {
+    // find user in database and update athentication state
+    await User.updateOne({ username: currentUser }, {
+      authenticated: false
+    })
+    this.setSurrentSignedInUser(null)
+    console.log('user logged out')
   }
 
   // id of current signed in user set whilet login in
@@ -87,6 +89,6 @@ export class SimpleAuth {
   }
 
   async getCurrentSignedInUser() {
-    return await User.findOne({username: this.currentUser})
+    return this.currentUser
   }
 }

@@ -7,7 +7,7 @@ try {
   //await auth.regiterUser('hannah3', 'password')
   await auth.signIn('hannah3', 'password')
   console.log('current user:', await auth.getCurrentSignedInUser())
-  await auth.signOut(await auth.getCurrentSignedInUser())
+  //await auth.signOut(await auth.getCurrentSignedInUser())
   
   
 } catch (error) {
