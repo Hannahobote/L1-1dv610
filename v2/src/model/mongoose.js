@@ -22,7 +22,6 @@ export class ConfigMongoose {
 
     // Connect to the server.
     return mongoose.connect(this.databaseConnectionString, {
-      useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
