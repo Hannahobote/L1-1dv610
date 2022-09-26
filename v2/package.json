@@ -1,8 +1,17 @@
 {
   "type": "module",
   "dependencies": {
+    "@lnu/eslint-config": "^1.1.6",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.2",
     "mongoose": "^6.6.1"
+  },
+  "eslintConfig": {
+    "extends": "@lnu"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "lint": "npx eslint ./src || exit 0",
+    "lint:fix": "npx eslint ./src --fix || exit 0"
   }
 }

@@ -13,8 +13,8 @@ export const userSchema = new mongoose.Schema({
     required: true
   },
   authenticated: {
-  type: Boolean,
-  required: true,
+    type: Boolean,
+    required: true
   }
 }, {
   timestamps: true,
