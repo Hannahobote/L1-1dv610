@@ -121,7 +121,12 @@ export class SimpleAuth {
     return this.currentUser
   }
 
-  getAllUsers () {
-
+  /**
+   * Find all users.
+   *
+   * @returns {object[]} object array of all the users in the database.
+   */
+  async getAllUsers () {
+    return this.database.findAll()
   }
 }

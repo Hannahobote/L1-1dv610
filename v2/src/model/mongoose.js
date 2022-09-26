@@ -45,6 +45,15 @@ export class ConfigMongoose {
   }
 
   /**
+   * Find all the users.
+   *
+   * @returns {object[]} returns info of all the users.
+   */
+  async findAll () {
+    return await User.find({})
+  }
+
+  /**
    * Add a user to the database.
    *
    * @param {string} username username

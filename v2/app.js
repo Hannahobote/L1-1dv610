@@ -10,16 +10,16 @@ try {
   // console.log('Register user', await auth.register('hannah5', 'password'))
 
   // Sign in a user
-  await auth.signIn('hannah3', 'password')
+  // await auth.signIn('hannah3', 'password')
 
   // Get current user
   // console.log('current user:', await auth.getCurrentSignedInUser())
 
   // Sign out user
-  console.log('Sign out', await auth.signOut())
+  // console.log('Sign out', await auth.signOut())
 
   // Get all users
-
+  console.log('All the users in the database', await auth.getAllUsers())
 } catch (error) {
   console.log(error)
 }
