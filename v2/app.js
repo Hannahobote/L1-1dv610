@@ -19,7 +19,8 @@ try {
   // console.log('Sign out', await auth.signOut())
 
   // Get all users
-  console.log('All the users in the database', await auth.getAllUsers())
+  console.log('All the users in the database', auth.getAllUsers())
+
 } catch (error) {
   console.log(error)
 }

@@ -16,7 +16,7 @@ export class ConfigMongoose {
   }
 
   /**
-   *Connects to the mongo database.
+   *Connects to the mongo database. Copied from Mats and Johan.
    *
    * @returns {string} Mongoose connection status message
    */
