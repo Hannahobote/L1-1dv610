@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 /**
- * Moddule starting point.
+ * Module starting point.
  */
 export class SimpleAuth {
   /**
@@ -44,7 +44,6 @@ export class SimpleAuth {
     try {
       // find user in database
       const user = await this.database.findOneByUsername(username)
-      console.log(user)
 
       // compare password
       if (this.isPasswordCorrect(password, user.password)) {

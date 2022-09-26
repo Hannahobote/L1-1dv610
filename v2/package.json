@@ -10,7 +10,7 @@
     "extends": "@lnu"
   },
   "scripts": {
-    "start": "node app.js",
+    "test": "node src/view/testApp.js",
     "lint": "npx eslint ./src || exit 0",
     "lint:fix": "npx eslint ./src --fix || exit 0"
   }
