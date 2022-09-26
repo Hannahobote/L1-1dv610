@@ -7,16 +7,16 @@ try {
   const auth = new SimpleAuth(process.env.DB_CONNECTION_STRING)
 
   // Register a user
-  // await auth.regiterUser('hannah3', 'password')
+  // console.log('Register user', await auth.register('hannah5', 'password'))
 
   // Sign in a user
   await auth.signIn('hannah3', 'password')
 
   // Get current user
-  console.log('current user:', await auth.getCurrentSignedInUser())
+  // console.log('current user:', await auth.getCurrentSignedInUser())
 
   // Sign out user
-  await auth.signOut(await auth.signOut())
+  console.log('Sign out', await auth.signOut())
 
   // Get all users
 

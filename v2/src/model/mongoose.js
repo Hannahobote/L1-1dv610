@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { User } from '../model/user-model.js'
 // copied form Mats and Johan
 
 /**
@@ -41,5 +42,52 @@ export class ConfigMongoose {
     } catch (error) {
       console.log(error.message)
     }
+  }
+
+  /**
+   * Add a user to the database.
+   *
+   * @param {string} username username
+   * @param {string} userPassword hashed password!
+   * @returns {object} object of user.
+   */
+  async addUser (username, userPassword) {
+    const user = new User({ username, password: userPassword, authenticated: false })
+    user.save()
+    return user
+  }
+
+  /**
+   * Find user by username.
+   *
+   * @param {string} name username
+   * @returns {object} object of user.
+   */
+  async findOneByUsername (name) {
+    const user = await User.findOne({ username: name })
+    return user
+  }
+
+  /**
+   * Find one user in the database.
+   *
+   * @param {string} userId id of the user.
+   * @returns {object} object of user information.
+   */
+  async findOneById (userId) {
+    const user = await User.findOne({ id: userId })
+    return user
+  }
+
+  /**
+   * Update any infomration of the user.
+   *
+   * @param {string} userId id of the user.
+   * @param {object} object of updated information.
+   * @returns {object} object of user information
+   */
+  async updateUser (userId, object) {
+    await User.updateOne({ id: userId }, object)
+    return this.findOneById(userId)
   }
 }

@@ -1,4 +1,3 @@
-import { User } from '../model/user-model.js'
 import { ConfigMongoose } from '../model/mongoose.js'
 import bcrypt from 'bcrypt'
 import dotenv from 'dotenv'
@@ -25,14 +24,13 @@ export class SimpleAuth {
    * @param {string} username the username.
    * @param {string} password the password.
    */
-  async regiterUser (username, password) {
+  async register (username, password) {
     // mongodb will check if theres is username or password
     // mongodb will check if theres a duplicate user
 
     // hash the pasword with bcrypt
     const hashPassword = await bcrypt.hash(password, 10)
-    const user = new User({ username, password: hashPassword, authenticated: false })
-    user.save()
+    const user = this.database.addUser(username, hashPassword)
     return user
   }
 
@@ -45,41 +43,16 @@ export class SimpleAuth {
   async signIn (username, password) {
     try {
       // find user in database
-      const user = await this.findOneUserByUsername(username)
+      const user = await this.database.findOneByUsername(username)
+      console.log(user)
+
       // compare password
       if (this.isPasswordCorrect(password, user.password)) {
         // if passowrd true, auth user
-        await this.authenticateUser(user.username)
+        await this.authenticateUser(user.id)
       }
     } catch (error) {
       console.log(error)
-    }
-  }
-
-  /**
-   *Find one user in database.
-   *
-   * @param {string} username username
-   */
-  async findOneUserByUsername (username) {
-    const user = await User.findOne({ username })
-    if (user) {
-      return user
-    } else {
-      throw new Error('User not found')
-    }
-  }
-
-  /**
-   *
-   * @param id
-   */
-  async findOneUserById (id) {
-    const user = await User.findOne({ id })
-    if (user) {
-      return user
-    } else {
-      throw new Error('User not found')
     }
   }
 
@@ -102,40 +75,41 @@ export class SimpleAuth {
   /**
    * Authenticate user and set autheticated=true.
    *
-   * @param {string} username username.
+   * @param {string} userId user id.
    */
-  async authenticateUser (username) {
-    // set user as logged in
-    await User.updateOne({ username }, {
-      authenticated: true
-    })
-    this.setCurrentSignedInUser(username)
+  async authenticateUser (userId) {
+    // set user as logged in¨
+
+    /** @type {object} object of user details */
+    const user = await this.database.updateUser(userId, { authenticated: true })
+    this.setCurrentSignedInUser(user)
     console.log('user logged in')
   }
 
   /**
    *Sign out user.
    *
+   * @returns {object} object of user.
    */
   async signOut () {
-    const user = await this.getCurrentSignedInUser().username
-    console.log(user)
+    /** @type {object} object of current user */
+    const user = await this.getCurrentSignedInUser()
+
     // find user in database and update athentication state
-    await User.updateOne({ user }, {
-      authenticated: false
-    })
+    /** @type {object} object of user info */
+    const updatedUser = await this.database.updateUser(user, { authenticated: false })
+
     this.currentUser = null
-    console.log('user logged out', await this.findOneUserByUsername(user))
+    return updatedUser
   }
 
   /**
    * Object of current signed in user.
    *
-   * @param {string} username username.
+   * @param {object} userObject object of current user.
    */
-  async setCurrentSignedInUser (username) {
-    const user = this.findOneUserByUsername(username)
-    this.currentUser = user
+  async setCurrentSignedInUser (userObject) {
+    this.currentUser = userObject
   }
 
   /**
