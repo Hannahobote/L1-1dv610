@@ -23,6 +23,7 @@ export class SimpleAuth {
    *
    * @param {string} username the username.
    * @param {string} password the password.
+   * @returns {object} an object of the user info.
    */
   async register (username, password) {
     // mongodb will check if theres is username or password
