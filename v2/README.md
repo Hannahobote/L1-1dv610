@@ -2,17 +2,17 @@
 ​
 ## Checklista
   - [x] Jag har skrivit all kod och reflektioner själv. Jag har inte använt mig av andras kod för att lösa uppgiften.
-  - [ ] Mina testresultat är skrivna utifrån utförd testning ( och inte teoretiskt: "det bör fungera" :) )
+  - [x] Mina testresultat är skrivna utifrån utförd testning ( och inte teoretiskt: "det bör fungera" :) )
   - [x] Koden är objektorienterad
   - [x] Jag har skrivit en modul som riktar sig till programmerare
 ​
 ## Egenskattning och mål
   - [ ] Jag är inte klar eftersom jag vet att jag saknar något. (Då skall du inte lämna in! Lämna då istället in på restlaboration.)
   - [x] Jag eftersträvar med denna inlämning godkänt betyg (E-D)
-    - [ ] De flesta testfall fungerar
+    - [x] De flesta testfall fungerar
     - [x] Koden är förberedd på Återanvändning
     - [x] All kod samt historik finns i git 
-    - [ ] Kodkvaliterskraven är ifyllda
+    - [x] Kodkvaliterskraven är ifyllda
     - [ ] Reflektion är skriven utifrån bokens kapitel 
   - [ ] Jag eftersträvar med denna inlämning högre betyg (C-B) och anser mig uppfylla alla extra krav för detta. 
     - [ ] Samtliga testfall är skrivna    

@@ -1,3 +1,4 @@
+## OBS applikationen ligger i v2!
 ## Connect to the module and put your mongo databse connection string as parameter. This is the start of the application.
   `const auth = new SimpleAuth(process.env.DB_CONNECTION_STRING)`
 
