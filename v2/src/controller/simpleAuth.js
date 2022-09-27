@@ -77,8 +77,6 @@ export class SimpleAuth {
    * @param {string} userId user id.
    */
   async authenticateUser (userId) {
-    // set user as logged in¨
-
     /** @type {object} object of user details */
     const user = await this.database.updateUser(userId, { authenticated: true })
     this.setCurrentSignedInUser(user)

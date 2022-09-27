@@ -8,10 +8,10 @@
 ​
 ## Egenskattning och mål
   - [ ] Jag är inte klar eftersom jag vet att jag saknar något. (Då skall du inte lämna in! Lämna då istället in på restlaboration.)
-  - [ ] Jag eftersträvar med denna inlämning godkänt betyg (E-D)
+  - [x] Jag eftersträvar med denna inlämning godkänt betyg (E-D)
     - [ ] De flesta testfall fungerar
-    - [ ] Koden är förberedd på Återanvändning
-    - [ ] All kod samt historik finns i git 
+    - [x] Koden är förberedd på Återanvändning
+    - [x] All kod samt historik finns i git 
     - [ ] Kodkvaliterskraven är ifyllda
     - [ ] Reflektion är skriven utifrån bokens kapitel 
   - [ ] Jag eftersträvar med denna inlämning högre betyg (C-B) och anser mig uppfylla alla extra krav för detta. 
