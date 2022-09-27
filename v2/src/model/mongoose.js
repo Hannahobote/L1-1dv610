@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import { User } from '../model/user-model.js'
-// copied form Mats and Johan
+// Part of code copied form Mats and Johan.
 
 /**
  * Connect and start mongodb.
@@ -16,7 +16,8 @@ export class ConfigMongoose {
   }
 
   /**
-   *Connects to the mongo database. Copied from Mats and Johan.
+   *Connects to the mongo database.
+   *Copied from Mats and Johan.
    *
    * @returns {string} Mongoose connection status message
    */
