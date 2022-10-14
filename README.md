@@ -13,7 +13,7 @@
     - [x] Koden är förberedd på Återanvändning
     - [x] All kod samt historik finns i git 
     - [x] Kodkvaliterskraven är ifyllda
-    - [ ] Reflektion är skriven utifrån bokens kapitel 
+    - [x] Reflektion är skriven utifrån bokens kapitel 
   - [ ] Jag eftersträvar med denna inlämning högre betyg (C-B) och anser mig uppfylla alla extra krav för detta. 
     - [ ] Samtliga testfall är skrivna    
     - [ ] Testfall är automatiserade

@@ -1,0 +1,33 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@lnu/eslint-config": "^1.1.6",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.2",
+    "mongoose": "^6.6.1"
+  },
+  "eslintConfig": {
+    "extends": "@lnu"
+  },
+  "scripts": {
+    "test": "node src/view/testApp.js",
+    "lint": "npx eslint ./src || exit 0",
+    "lint:fix": "npx eslint ./src --fix || exit 0"
+  },
+  "name": "1dv610-simple-auth",
+  "description": "Simply authenticate your user. This is a school project",
+  "version": "1.0.0",
+  "main": "./src/controller/simpleAuth.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hannahobote/L1-1dv610.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hannahobote/L1-1dv610/issues"
+  },
+  "homepage": "https://github.com/Hannahobote/L1-1dv610#readme"
+}
